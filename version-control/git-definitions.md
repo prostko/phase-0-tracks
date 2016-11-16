@@ -12,4 +12,6 @@
 	> A commit is saving the new branch and adding it to the master. It creates a reversable point and the ability to leave a reasonable, clear message as to what the change is, so others can understand what's going on inside. It also leaves a timestamp.
 
 * What is a merge conflict?
-	Merge conflict occurs when there seems to be a fundamental difference in the two files to be merged. Usually when there have been changes made to both branches (maybe to the same line of code). This would require the two to come together and figure out the issue themselves, instead of Git being able to figure it out for them. 
+	Merge conflict occurs when there seems to be a fundamental difference in the two files to be merged. Usually when there have been changes made to both branches (maybe to the same line of code). This would require the two to come together and figure out the issue themselves, instead of Git being able to figure it out for them.
+	
+	[change]
