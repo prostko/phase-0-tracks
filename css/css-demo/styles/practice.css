@@ -1,0 +1,24 @@
+#contact-info {
+	font-size: .8em;
+
+}
+
+.job {
+	background-color: #e9e5dc;
+	border-radius: 25px;
+	padding: 20px;
+	margin-top: 10px;
+}
+
+.lists {
+	font-size: .8em;
+}
+
+#contact-info :hover{
+	color: red;
+
+}
+
+ul > li {
+	color: pink;
+} 
