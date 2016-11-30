@@ -1,0 +1,25 @@
+img{
+	display: block;
+	margin: 50% auto 0 auto;
+}
+
+.octopus {
+	position: relative;
+	width: 100%;
+	max-width: 210px;
+	margin-left: 50%;
+	right: 105px;
+}
+
+#hat {
+	position: absolute;
+	bottom: 62%;
+	left: -10%;
+	
+}
+
+#glasses {
+	position: absolute;
+	bottom: 45%;
+	left: 20%;
+}
