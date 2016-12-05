@@ -1,0 +1,28 @@
+4.2 Algorithms
+Practice algorithm
+Eric Prostko
+
+Brushing the teeth
+
+-IF you just woke up OR you are about to go to bed 
+
+-Navigate to bathroom	
+-Locate sink
+	-Assemble toothbrush, toothpaste, floss
+-Turn on cold water
+	-Wet the bristles of the toothbrush
+	-WHILE bristles are wet, apply too much toothpaste to bristles
+-Brush teeth in short motions 
+	-Start brushing-teeth timer
+	-WHEN all surfaces of teeth are brushed AND 2 minutes have elapsed 
+		-Spit into sink
+-Slurp some water and rinse mouth 
+	-Spit into sink
+-IF floss has not been used, do not use floss
+-Hold toothbrush under the water
+	WHILE toothbrush is dirty, continue rinsing
+-WHEN toothbrush is clean, return toothbrush, toothpaste and floss
+
+-Exit Bathroom
+
+
