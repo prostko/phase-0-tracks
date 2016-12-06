@@ -6,7 +6,7 @@ hamsters_name= gets.chomp
 
 puts "From a scale of 1-10, how loud is the hamster?"
 
-noise = gets.chomp
+noise = gets.chomp.to_i
 
 puts "What color is the hamster?"
 
@@ -18,9 +18,10 @@ candidate = gets.chomp
 
 puts "Approximately how old is the hamster?"
 
-age = gets.chomp
+age = gets.chomp.to_i
 
 if age.empty? == true
   age = nil
 	puts "nil"
 end
+
