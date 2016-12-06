@@ -18,12 +18,14 @@ candidate = gets.chomp
 
 puts "Approximately how old is the hamster?"
 
-age = gets.chomp.to_i
+age = gets.chomp
 
-if age.empty? == true
+if age == ""
   age = nil
-	puts "nil"
+else age.to_i
 end
 
 puts "Your hamster's name is #{hamsters_name}, on a scale from 1-10, your hamsters noise is #{noise},
-your hamster's fur color is #{color}, the hamster is a #{candidate} for adoption, your hamster is #{age}" 
+your hamster's fur color is #{color}, the hamster is a #{candidate} for adoption, your hamster's age is #{age}" 
+
+
