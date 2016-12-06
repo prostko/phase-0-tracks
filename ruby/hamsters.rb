@@ -25,3 +25,5 @@ if age.empty? == true
 	puts "nil"
 end
 
+puts "Your hamster's name is #{hamsters_name}, on a scale from 1-10, your hamsters noise is #{noise},
+your hamster's fur color is #{color}, the hamster is a #{candidate} for adoption, your hamster is #{age}" 
