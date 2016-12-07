@@ -24,20 +24,18 @@ def employee_questions
 #ask user for allergy input, add each answer to an array, stop when done is input 
 	puts "If you have any allergies, please input them one at a time, or type 'done'"
 	
-	allergies = []
-
-
+		allergies = []
 
 	until (allergy = gets.chomp.downcase) == "done" do
 
-		puts "Please input additional allergy, or type 'done'"
-	
-		allergies << allergy
+		if allergy == "sunshine" 
+		allergies = ["Probably a Vampire"] 
+		break
+		else puts "Please input additional allergy, or type 'done'"
+			allergies << allergy
 
+		end
 	end
-
-p allergies
-
 end
 
 
@@ -54,6 +52,6 @@ end
 
 initial
 
-
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 
 
