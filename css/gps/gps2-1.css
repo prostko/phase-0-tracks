@@ -1,3 +1,28 @@
+
+
 body {
-	background: lightgray;
+  background:#9099A2;
+}
+
+.column-1, .column-2 {
+ float: left;
+  width: 45%;
+  vertical-align: top;
+  margin:.11%;
+  padding: 5px 3px 7px 20px;
+}
+
+.column-1{
+  background: #96858F;
+  border: 1px solid red;
+}
+
+.column-2 {
+  background: #6D7993;
+  border: 1px dotted green; 
+}
+
+img{
+   height: auto;
+    width: 50%;
 }
