@@ -1,5 +1,5 @@
 
-#asking user for number or employees, making program run that many times
+#method asking user for number or employees, making program run that many times
 def employee_questions 
 	puts "Hello, welcome to the Werewolves Inc. "
 
@@ -11,7 +11,7 @@ def employee_questions
 
 	puts "How old are you? What year were you born?"
 
-		age = gets.chomp
+		age = gets.chomp.to_i
 
 	puts "Our company cafeteria serves garlic bread. Should we order some for you?"
 
@@ -28,17 +28,17 @@ def employee_questions
 
 	until (allergy = gets.chomp.downcase) == "done" do
 
-		if allergy == "sunshine" 
+		if allergy == "sunshine"  # takes sunshine and automatically spits out "vampire!"
 		allergies = ["Probably a Vampire"] 
 		break
 		else puts "Please input additional allergy, or type 'done'"
-			allergies << allergy
+			allergies << allergy 
 
 		end
 	end
 end
 
-
+#beginning of program
 
 def initial
 	puts "Hello, welcome to employee-testing"
