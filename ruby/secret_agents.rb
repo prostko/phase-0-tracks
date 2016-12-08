@@ -1,19 +1,28 @@
 # Encrypt
 def encrypt(password)
+ index = 0
+	
+   while index < password.length
+
+   p password[index].next
+ 
+   index += 1
+
+  end
+end
+
 	# Make the Loop
 
 		#-in order to encrypt, first give the method a name
 
 		#-index set to 0, to start loop from the beginning of the word
-	index = 0
-		
-	while index < password.length
+	
 		#-find the length with built-in method [.length]
-		p password[index].next
+		
 		#-using length of the word given to us by .length the method will know how many times to loop through
-		index += 1
+		
 		#-make index break point = to .length
-	end
+
 	# Encrypt the password
 
 		#-add on .next to method_name so that every letter advances to next letter in the sequence of the alphabet
@@ -25,16 +34,32 @@ def encrypt(password)
 # Decrypt
 
 def decrypt(password)
+   
 	index_counter = 0
+	
 	alphabet = "abcdefghijklmnopqrstuvwxyz"
-	# Make the Loop
-	while index_counter < password.length
-		#-put index set as "abc...xyz"
-		p password[index_counter] = alphabet.index[(password[index_counter].index)-1]
-															
+	
+	decrypt_array = []
+	
+	  until index_counter == password.length
+	
+		  encrypt_reverse = alphabet.index(password[index_counter])
 
+		  minused_letter = encrypt_reverse - 1
+		  
+		  decrypt_array << alphabet[minused_letter]
+      
+		  index_counter += 1
+      
+	  end
+	  p decrypt_array
+end
+
+
+	# Decrypt
+		# Make the Loop
+		#-put index set as "abc...xyz"
 		#-give method name: decrypt alphabet.index[]
-		index_counter += -1
 		#-find length of word with .length
 	
 		#-use length of the word to give condition to the loop how many times to cycle through password
