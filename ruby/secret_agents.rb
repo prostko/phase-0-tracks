@@ -1,14 +1,29 @@
 # Encrypt
+
+
+
+
 def encrypt(password)
+  
  index = 0
-	
-   while index < password.length
+  
+  encrypt_array = []
 
-   p password[index].next
- 
-   index += 1
+	 while index < password.length
+	 
+	  if password[index] == "z" 
+	    
+	    encrypt_array << "a"
+	  else
+	   
+	    encrypt_array << password[index].next
+	    
+    end
+    
 
+  index += 1
   end
+  p encrypt_array
 end
 
 	# Make the Loop
@@ -72,4 +87,27 @@ end
 		#-using the index[alphabet] find position of each letter in the password and subtact one from that index[position] once 
 	
 		#-take that new letter referenced by the index and insert it into the password index position 
+
+
+
+# Notes:
+	#Try nested method call
+		# Since Ruby evalutates code within parenthesis first; the word is encrypted first, which allows the decrypt method to decrypt it
+
+
+puts "Would you like to decrypt or encrypt the password?"
+
+user_input = gets.chomp
+
+puts "What is the password?"
+
+word = gets.chomp
+
+if user_input == "encrypt"
+  encrypt(word)
+else user_input == "decrypt"
+  decrypt(word)
+
+end
+
 
