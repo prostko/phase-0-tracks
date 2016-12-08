@@ -26,7 +26,7 @@ def encrypt(password)
     # Adding 1 to the counter, so loop will eventually end
   index += 1
   end
-  # Printing out results of encrypt
+  # Printing out results of encrypt and making array of characters a single string
   p "#{encrypt_array.join}"
 end
 
@@ -76,7 +76,7 @@ def decrypt(password)
       		# adding one to the counter so the loop will eventually end
 	  end
 	  p "#{decrypt_array.join}"
-	   # printing results
+	   # printing results and making the array of characters a single string
 end
 
 
