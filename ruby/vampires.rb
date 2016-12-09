@@ -1,5 +1,7 @@
 
 #method asking user for number or employees, making program run that many times
+
+
 def employee_questions 
 	puts "Hello, welcome to the Werewolves Inc. "
 
@@ -48,10 +50,12 @@ def initial
 	num_emp = gets.chomp.to_i
 
 	(num_emp).times do employee_questions end
+
+	puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 end
 
 initial
 
-puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
+
 
 
