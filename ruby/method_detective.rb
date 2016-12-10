@@ -4,36 +4,38 @@
 # When there's more than one suspect who could have
 # committed the crime, add additional calls to prove it.
 
-# "iNvEsTiGaTiOn".<???>
-# => “InVeStIgAtIoN”
+p "iNvEsTiGaTiOn".swapcase
+p "InVeStIgAtIoN" == "iNvEsTiGaTiOn".swapcase
 
-# "zom".<???>
-# => “zoom”
+p "zom".insert(1, "o")
+p "zoom" == "zom".insert(1, "o")
 
-# "enhance".<???>
-# => "    enhance    "
+p "enhance".center(15, " ")
+p "    enhance    " == "enhance".center(15, " ")
 
-# "Stop! You’re under arrest!".<???>
-# => "STOP! YOU’RE UNDER ARREST!"
+p "Stop! You’re under arrest!".upcase
+p "STOP! YOU’RE UNDER ARREST!" == "Stop! You’re under arrest!".upcase
 
-# "the usual".<???>
-#=> "the usual suspects"
+p "the usual".ljust(18, " suspects")
+p "the usual suspects" == "the usual".ljust(18, " suspects")
 
-# " suspects".<???>
-# => "the usual suspects"
+p " suspects".rjust(18, "the usual ")
+p "the usual suspects" == " suspects".rjust(18, "the usual ")
 
-# "The case of the disappearing last letter".<???>
-# => "The case of the disappearing last lette"
+p "The case of the disappearing last letter".chop # or [range] or slice(range)
+p "The case of the disappearing last lette" == "The case of the disappearing last letter".chop
 
-# "The mystery of the missing first letter".<???>
-# => "he mystery of the missing first letter"
+p "The mystery of the missing first letter".slice(1..-1) # or byteslice(range) or just [range]
+p "he mystery of the missing first letter" == "The mystery of the missing first letter".slice(1..-1)
 
-# "Elementary,    my   dear        Watson!".<???>
-# => "Elementary, my dear Watson!"
+p "Elementary,    my   dear        Watson!".tr_s(" ", " ")
+p "Elementary, my dear Watson!" ==  "Elementary,    my   dear        Watson!".tr_s(" ", " ")
 
-# "z".<???>
-# => 122 
+  "z".setbyte(0, 122)
+puts "z".codepoints # or each_codepoint with a block, either way you need to pull it out of the array and transform it into an integer
+p 122 == "z".codepoints.join.to_i
 # (What is the significance of the number 122 in relation to the character z?)
+# it is the integer ordinal of the letter z, which incidently is a great mathalete squad name
 
-# "How many times does the letter 'a' appear in this string?".<???>
-# => 4
+p "How many times does the letter 'a' appear in this string?".count("a")
+p 4 == "How many times does the letter 'a' appear in this string?".count("a")
