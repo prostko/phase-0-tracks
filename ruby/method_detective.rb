@@ -10,8 +10,8 @@ p "InVeStIgAtIoN" == "iNvEsTiGaTiOn".swapcase
 p "zom".insert(1, "o")
 p "zoom" == "zom".insert(1, "o")
 
-p "enhance".center(23, " ")
-p "    enhance    " == "enhance".center(3, " ")
+p "enhance".center(15, " ")
+p "    enhance    " == "enhance".center(15, " ")
 
 p "Stop! You’re under arrest!".upcase
 p "STOP! YOU’RE UNDER ARREST!" == "Stop! You’re under arrest!".upcase
