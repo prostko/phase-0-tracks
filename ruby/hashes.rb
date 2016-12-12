@@ -63,6 +63,7 @@ def ask_questions
 	client_brands = gets.chomp
 	brands = "none" if client_brands == "none"
 	while client_brands != "none"
+
 		
 
 
