@@ -1,12 +1,17 @@
-etters = ["aaa", "b", "c", "d", "e", "aa"]
+#             Release 2
 
-superheroes = {
-	superman:"flying",
-	batman:"killing",
-	spiderman:"saving_people"
-}
+#the array and hash to expiriment with
+	numbers = [1, 2, 3, 4]
 
-numbers = [1, 2, 3, 4]
+	letters = ["aaa", "b", "c", "d", "e", "a", "b", "h"] 
+
+	roman_nums = {
+		"1" => "I",
+		'5'=> "V",
+		"10" => "X",
+		this: "C"
+	}
+
 
 letters.delete("aaa")
 p letters
@@ -40,20 +45,21 @@ p numbers
 
 
 
-letters = ["aaa", "b", "c", "d", "e", "aa"]
-
-superheroes = {
-	superman:"flying",
-	batman:"killing",
-	spiderman:"saving_people"
-}
-
-
 
 #        Release 1
 
+# the aray and hash to expiriment with
+	letters = ["aaa", "b", "c", "d", "e", "a", "b", "h"]
+
+	superheroes = {
+		superman: "flying",
+		batman: "World's greatest butler",
+		spiderman: "shooting web"
+	}
+
 # Running the .each method
-	# Running .each on the array
+ # Running .each on the array
+ def each_map_exp
 	puts "\n\n Using .each\n"
 	#---------------------------------------
 	puts "This is before running the block."
@@ -75,7 +81,7 @@ superheroes = {
 
 
 # Running the .map method
-	# Running .map on the array and setting it to a new array
+ # Running .map on the array and setting it to a new array
 	puts "\n\n Using .map\n"
 	#------------------------
 	puts "This is before running the letters.map block"
@@ -97,7 +103,7 @@ superheroes = {
 
 
 # Running the .map! method
-	# Running the destructive .map! on the array
+ # Running the destructive .map! on the array
 	puts "\n\nUsing .map!\n"
 	#--------------------------
 	p "This is before running the letters array .map! block"
@@ -107,7 +113,7 @@ superheroes = {
 	end
 	p "This is after running the letters array .map! block"
 
-	# Running the destructive 
+ # Running the destructive 
 	p "This is before running the superhero hash .map! block"
 	p superheroes
 	superheroes.map! do |superhero, power|
@@ -115,6 +121,7 @@ superheroes = {
 	end
 	p "This is after running the superhero hash .map! block"
 
+end
 
 
-
+each_map_exp
