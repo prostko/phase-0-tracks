@@ -67,7 +67,7 @@ def rotate_vowels
       			vowels.rotate!
       		end
       		next_vowels_arr << vowels[1]
-      elsif (letter =~ /[AEIOU]/) == 0 
+      	elsif (letter =~ /[AEIOU]/) == 0 
       		until (vowels[0].upcase) == letter
       			vowels.rotate!
       		end
@@ -98,10 +98,11 @@ def rotate_consonants
 		else next_consonants_arr << letter
 		end
   	end
+
  p "...\n"
  p user_name = next_consonants_arr.join
  p "please press enter key"
- clr = gets.chomp
+ clr = gets
  puts "\n\n\n"
 
  begin_program
