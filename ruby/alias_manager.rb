@@ -34,6 +34,8 @@ Alias generator
 	Returns the fake name
 	Begins program again
 		- exit program loop by typing quit into quit method
+	Finally making a hash with global variables, and pushing those into the hash
+		- printing the hash out as last gasp
 =end
 
 $real_name = nil
@@ -103,9 +105,11 @@ def rotate_consonants
 
  
  user_name = next_consonants_arr.join
+
  puts "Aliased name is :   #{user_name} \n"
+
  $fake_name = user_name
- 
+
  make_hash
 
  puts "\n\n"
