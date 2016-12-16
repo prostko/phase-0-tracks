@@ -36,14 +36,16 @@ Alias generator
 		- exit program loop by typing quit into quit method
 =end
 
-
-
+$real_name = nil
+$fake_name = nil
+$name_hash = Hash.new
 
 
 
 def take_the_name
 	puts "please input name to alias"
 	user_name = gets.chomp
+	$real_name = user_name
 	user_name
 end
 
@@ -99,31 +101,51 @@ def rotate_consonants
 		end
   	end
 
- p "...\n"
- p user_name = next_consonants_arr.join
- p "please press enter key"
- clr = gets
- puts "\n\n\n"
+ 
+ user_name = next_consonants_arr.join
+ puts "Aliased name is :   #{user_name} \n"
+ $fake_name = user_name
+ 
+ make_hash
+
+ puts "\n\n"
 
  begin_program
 end
 
 
+def make_hash
+	$name_hash[$fake_name]= $real_name
+	$name_hash
+end
+
+
+
+
 def aquittal
 	puts "If you would like to exit, please type 'quit'"
 	continue = gets.chomp.downcase
+
+	$name_hash.each do |fake, real|
+	  p "#{fake}'s real name is '#{real}'."
+	end
+
 	continue[0] == "q" ? true : false
+	
 end
 
 def begin_program
 	
-	puts "Would you like to alias you name?"
+	puts "Would you like to alias a name?\n"
 	response = gets.chomp.downcase
 	response[0] != "n" ?  rotate_consonants : until aquittal do begin_program end
 
 end
 
-puts "Hello\n\n"
+
+
+
+puts "Hello\n"
 begin_program
 
 
