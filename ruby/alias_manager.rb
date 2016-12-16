@@ -3,34 +3,37 @@
 Alias generator
 	`Takes user name; first and last
 		`get the name from the user
-		`make it lowercase
 
-	Creates a fake name
+	`Creates a fake name
 		`switches the first and last name
-			- create a name switcher, using index location
-			- take the string and turn it into an array, breaking at the spaces
-			- add the index[0] back in
-			- return the range from [1]...[-1]
+			` create a name switcher, using rotate
+			` take the string and turn it into an array, breaking at the spaces
 			- turn it back into a string
 				!! keep the spaces !!
 
-			* this is all accomplished using .rotate
+			* this is  accomplished using .rotate
 
 		`changing all the vowels to the next letter in the aeiou string
-			- define a cypher seed (aeiou)
+			- define a cypher seed (aeiou and AEIOU)
 			- break the array into individual letters
-			- search each of the letters for aeiou
-				?? use a regex of aeiou?
+			- search each of the letters for aeiou (regex)
+			- involve a second regex to catch capital letters
 				- skip if it's a space
 				- if they return true (match)
-					- find that next letter.index in the seed, and replace the letter.index+1 in the cypher
-			- might be easier to find letter.index in seed, then rotate the seed, possibly not 
-				!! will eliminate edge cases !!
+					- rotate seed until first seedletter matches letter
+					- add second index of rotated seed to new array
+					
+					* this eliminates edge cases
+
 			- turn back into a string
 				!! Keep the spaces !!
 		`changing all the consonants to the next consonant in the alphabet
 			- do this the same way as with the vowels, using the rotate
+			- involve a second regex to catch and keep the capitalization
+
 	Returns the fake name
+	Begins program again
+		- exit program loop by typing quit into quit method
 =end
 
 
