@@ -90,9 +90,21 @@ unsort_array = [1, 3, 4, 2, 5,45,23,43,54,65,21,78,54,32,5,7,433,9]
 def insertion_sort(arr_to_sort, input)
   
   arr_to_sort << input
-	arr_to_sort.sort
-	
+  arr = arr_to_sort
+  for x in 1..(arr.size-1) do
+    if arr[x-1] > arr[x] 
+      arr[x-1], arr[x] = arr[x], arr[x-1]
+      x.downto(1) do |xx|
+        if arr[xx] < arr[xx-1]
+         arr[xx-1], arr[xx] = arr[xx], arr[xx-1]
+        end
+      end
+    end
+  end
+  arr
 end
+	
+
 
 insertion_sort([1, 3, 4, 10, 5], 2)
 
