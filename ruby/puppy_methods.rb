@@ -42,6 +42,13 @@ puppy.shake_hands
 
 #release 2
 
+=begin Dolphin class
+		Initialize method for the dolphin
+		dolphin does tricks(methods)
+		save all the dolphins into an array
+
+=end
+
 class Dolphin
  def initialize
    puts "initializing new dolphin instance"
