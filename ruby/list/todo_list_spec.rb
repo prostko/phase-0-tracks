@@ -1,3 +1,28 @@
+class TodoList
+  def initialize(list_items)
+    @list = list_items 
+  end
+
+  def get_items
+    @list
+  end
+
+  def add_item(new_item)
+    @list << new_item
+  end
+
+  def delete_item(item2delete)
+    @list.delete(item2delete)
+  end
+
+  def get_item(index)
+    @list[index]
+  end
+end
+
+
+
+
 describe TodoList do
   let(:list) { TodoList.new(["do the dishes", "mow the lawn"]) }
 
@@ -19,3 +44,5 @@ describe TodoList do
     expect(list.get_item(0)).to eq "do the dishes"
   end
 end
+
+
