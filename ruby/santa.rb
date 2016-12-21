@@ -1,5 +1,8 @@
 class Santa
-
+# Refactored getter/setter methods
+	attr_reader :ethno
+	attr_accessor :gender, :reindeer_ranking, :age
+# defining initializing sequence, with two attributes
 	def initialize(gender,ethno)
 		puts "Initializing Santa Instance ..."
 		@gender = gender
@@ -7,13 +10,9 @@ class Santa
 		@age = 0
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 	end
-
+# different class methods
 	def reindeer_ranking(reindeers)
 		@reindeer_ranking = reindeers 
-	end
-
-	def age(num)
-		@age = num if num >= 0
 	end
 
 	def speak
@@ -24,20 +23,28 @@ class Santa
 		puts "That was a good #{cookie} cookie!"
 	end
 
-	def about
-		puts "Ethnicity : #{@ethno},\n Gender : #{@gender} "
+	def celebrate_birthday
+		@age += 1
 	end
 
-	def about_age
-		puts "Age : #{@age}"
+	def get_mad_at(bad_deer)
+		bad_deer = bad_deer.capitalize
+		@reindeer_ranking.delete(bad_deer)
+		@reindeer_ranking.insert(-1, bad_deer)
+		p "Santa is very mad at #{bad_deer}."
+		p "#{bad_deer} has been moved to last in Reindeer Rankings"
+		@reindeer_ranking
 	end
-
-
 end
 
-this_santa = Santa.new("male", "Honky")
-that_santa = Santa.new("female", "Cracker")
+santas = []
+example_genders = ["agender", "male", "female", "trans", "N/A", "gender fluid", "very unicorn", "so both", "much neither", "forever alone", "sexually identifies as santa"]
+example_ethnos = ["white", "black", "asian", "latino", "native-american", "northern", "european", "indian", "muslim", "jewish", "pacific islander"]
 
+this_santa = Santa.new("male", "white")
+that_santa = Santa.new("female", "indian")
+
+=begin
 this_santa.speak
 that_santa.eat_milk_and_cookies("shortbread")
 
@@ -49,31 +56,31 @@ that_santa.about_age
 this_santa.reindeer_ranking("ONLY RUDOLPH")
 that_santa.about
 this_santa.about
+=end
 
-santas = []
-example_genders = ["agender", "male", "female", "trans", "N/A", "gender fluid"]
-example_ethnos = ["white", "black", "asian", "latino", "native-american", "northern", "european"]
-
-
-
-
-
-10.times do |s|
-	santas << ( Santa.new(example_ethnos[3],example_genders[0]))
-		example_genders.shuffle!
-		example_ethnos.shuffle!
+10000.times do |s|
+	santas << ( Santa.new(example_ethnos.shuffle.sample,example_genders.shuffle.sample))
 	end
-santas.each do |x| puts x.about end
+santas.map do |each| each.age= (rand(0..140)) end
+santas.map do |x| puts "This santa is #{x.ethno}; Gender is #{x.gender}; Age #{x.age} old" end
 
 
 
 
+=begin
+p this_santa.get_mad_at("Rudolph")
+p that_santa.get_mad_at("Dasher")
 
+p this_santa.gender
+p that_santa.gender
+that_santa.gender= "fluid"
+p that_santa.gender
 
-
-
-
-
+p this_santa.age
+this_santa.celebrate_birthday
+this_santa.celebrate_birthday
+p this_santa.age
+=end
 
 
 
