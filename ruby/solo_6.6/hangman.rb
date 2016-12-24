@@ -75,13 +75,6 @@ end
 
 
 def new_game
-	puts "Hello, welcome to Hangman"
-	puts "This is a game for two or more players."
-	puts "The Hangman will input a word.\n The other players will have the chance to guess that word letter by letter,\n the game ends when the number of guesses is reached,\n or when the word is correctly guessed."
-	puts "If you would like to play, please input 'begin'"
-
-	start = gets.chomp.downcase
-	if start[0] == "b" 
 		puts "Hangman: Please input word to play (Hide the screen!)"
 
 		nw_gm = Hangman.new(gets.chomp)
@@ -93,31 +86,44 @@ def new_game
 		puts "Player, guess a letter!"
 		puts "(or type 'exit')"
 
-		nw_gm.guess_letter(gets.chomp)
+		guess_input = gets.chomp
+		nw_gm.guess_letter(guess_input)
+			if guess_input == "exit"
+				break end
 			if nw_gm.game_word == nw_gm.hangman_word
 				puts "HOLY CRAP THAT WAS AMAZING\n YOU WIN!"
 				break
 			elsif (nw_gm.game_word != nw_gm.hangman_word) && (nw_gm.end_count == nw_gm.round_count)
-				puts "So sorry, you ran out of guesses..\n I guess you aren't good enough\nGame Over"
+				puts "\nSo sorry, you ran out of guesses..\n I guess you aren't good enough\n\n----------Game Over----------\n\n"
 				break
 			else 
 				puts "\n" * 20 
 				puts "You have #{nw_gm.end_count-nw_gm.round_count} guesses left.\n You have guessed '#{nw_gm.guesses.uniq.join('')}'."
 			end
 		end
-	else 
-		puts "\nGoodbye!"
-	end
-	
 end
 
 
-new_game
 
+puts "Hello, welcome to Hangman"
+	puts "This is a game for two or more players."
+	puts "The Hangman will input a word.\n The other players will have the chance to guess that word letter by letter,\n the game ends when the number of guesses is reached,\n or when the word is correctly guessed."
+	puts "If you would like to play, please input 'begin'"
 
+	start = gets.chomp.downcase
+	keep_playing = "y"
 
+	if start[0] == "b" 
+		
+		until keep_playing[0].downcase == "n"
+		new_game 
+		puts "Would you like to play again?"
+			keep_playing = gets.chomp
+		end
 
-
+	else 
+		puts "\nGoodbye!"
+	end
 
 
 
