@@ -48,7 +48,7 @@ Testing
 
 
 class Hangman
-	attr_reader :game_word, :end_count, :round_count, :hangman_word, :game_word, :guesses
+	attr_reader :game_word, :end_count, :round_count, :hangman_word, :game_word, :guesses, :matched_guesses
 
 	def initialize(hangman_word)
 		@hangman_word = hangman_word
@@ -56,6 +56,7 @@ class Hangman
 		@game_word = "_" * @end_count
 		@round_count = 0
 		@guesses = []
+		@matched_guesses = []
 	end
 
 	def guess_letter(guess_letter)
@@ -67,7 +68,8 @@ class Hangman
 			end
 		end
 		@guesses << guess_letter
-		@round_count = @guesses.uniq.length
+		@matched_guesses = @guesses - @hangman_word.chars 
+		@round_count = @matched_guesses.uniq.length
 		@game_word
 	end
 end
