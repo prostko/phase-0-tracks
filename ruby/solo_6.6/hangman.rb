@@ -72,6 +72,30 @@ class Hangman
 		@round_count = @matched_guesses.uniq.length
 		@game_word
 	end
+
+	def display_hangedman
+    remains = @round_count.to_f / @end_count.to_f
+
+    hangedman = "]===== x =\n       :\n       :\n"
+
+		if remains >= (0.2)
+		hangedman += "       @\n       |\n"
+		end
+		if remains >= (0.4)
+		hangedman = "]===== x =\n       :\n       :\n       O\n      -|"
+    end
+		if remains >= (0.6)
+		hangedman += "-\n"
+		end
+		if remains >= (0.8)
+		hangedman += "       =\n      /"
+		end
+		if remains >= 1
+		hangedman += " |"
+		end
+		puts hangedman
+		puts "________________________________"
+	end
 end
 
 
@@ -83,10 +107,13 @@ def new_game
 		puts "\n" * 20 
 
 		until nw_gm.end_count == nw_gm.round_count
+		nw_gm.display_hangedman
+		puts "\n" * 3
 		p nw_gm.game_word
-		puts
+		puts "\n" 
 		puts "Player, guess a letter!"
 		puts "(or type 'exit')"
+
 
 		guess_input = gets.chomp
 		nw_gm.guess_letter(guess_input)
@@ -97,9 +124,11 @@ def new_game
 				break
 			elsif (nw_gm.game_word != nw_gm.hangman_word) && (nw_gm.end_count == nw_gm.round_count)
 				puts "\nSo sorry, you ran out of guesses..\n I guess you aren't good enough\n\n----------Game Over----------\n\n"
+				nw_gm.display_hangedman
 				break
 			else 
-				puts "\n" * 20 
+				puts "\n" * 20
+				puts
 				puts "You have #{nw_gm.end_count-nw_gm.round_count} guesses left.\n You have guessed '#{nw_gm.guesses.uniq.join('')}'."
 			end
 		end
