@@ -65,6 +65,7 @@ class Hangman
 	end
 
 	def guess_letter(guess_letter)
+		guess_letter = guess_letter[0]
 		if @hangman_word.include?(guess_letter)
 			(@hangman_word.size).times do |index|
 				if @hangman_word[index] == guess_letter
