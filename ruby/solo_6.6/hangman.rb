@@ -53,7 +53,12 @@ class Hangman
 	def initialize(hangman_word)
 		@hangman_word = hangman_word
 		@end_count = hangman_word.length
-		@game_word = "_" * @end_count
+		@game_word = hangman_word.chars.map do |char| 
+		  if char.match(/["a-z"]/)
+		    char = "_"
+		  else char = char
+		  end
+		end.join
 		@round_count = 0
 		@guesses = []
 		@matched_guesses = []
