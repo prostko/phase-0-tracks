@@ -1,15 +1,17 @@
 require_relative 'hangman.rb'
 
 describe Hangman do
-	let(:hangman) {Hangman.new("testing")}
+	let(:hangman) {Hangman.new("testing+testing")}
 
 	it "Changes hangman_word to Game_word('___')" do
-		expect(hangman.game_word).to eq "_______"
+		expect(hangman.game_word).to eq "_______+_______"
 	end
 
+	it "takes a phrase, leaving anyhting that isnt a letter" do
+	end
 
 	it "reveals correct guess letter" do
-		expect(hangman.guess_letter("t")).to eq "t__t___"
+		expect(hangman.guess_letter("t")).to eq "t__t___+t__t___"
 	end
 
 	it "sets round count equal to number of unique guesses made" do
