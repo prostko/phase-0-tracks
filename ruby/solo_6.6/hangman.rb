@@ -125,9 +125,11 @@ def new_game
 			if guess_input == "exit"
 				break end
 			if nw_gm.game_word == nw_gm.hangman_word
+				puts "\n" *5
 				puts "HOLY CRAP THAT WAS AMAZING\n YOU WIN!"
 				break
 			elsif (nw_gm.game_word != nw_gm.hangman_word) && (nw_gm.end_count == nw_gm.round_count)
+				puts "\n" *3
 				puts "\nSo sorry, you ran out of guesses..\n I guess you aren't good enough\n\n----------Game Over----------\n\n"
 				nw_gm.display_hangedman
 				break
