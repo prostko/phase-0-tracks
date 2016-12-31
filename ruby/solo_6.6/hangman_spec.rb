@@ -8,6 +8,7 @@ describe Hangman do
 	end
 
 	it "takes a phrase, leaving anyhting that isnt a letter" do
+		expect(Hangman.new("abcd %$#@!").game_word).to eq "____ %$#@!"
 	end
 
 	it "reveals correct guess letter" do
