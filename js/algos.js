@@ -1,4 +1,13 @@
-
+/* Sort the array, longest string last, return last place in sorted array
+    First we need to take an array
+        going through the array index by index, checking if the index behind the index is greater
+            if it is, they need to switch
+                index-1 = index, index = index-1
+            Then go backwards down the line, checking if each one needs to switch
+                index number backwards until 0, each of the indexes
+            when it doesn't need to switch anymore, goes to next spot in array and goes again
+        return new array
+*/
 function longestPhrase(array) {// this is insertion sort for javascript, returns last item (longest phrase)
     for (i = 1; i < (array.length); i++) {// iterates through each of the items in passed array, only works when they are strings
         if (array[i].length < array[i-1].length) { // if the item behind the index' length is greater
@@ -14,17 +23,15 @@ function longestPhrase(array) {// this is insertion sort for javascript, returns
     return array[array.length-1]// returns the last item in the array
 };
 
-/*
-var phrases = ["long phrase","longest phrase","longer phrase"];
-var test_phrases = ["several", "different", "phrases", "all", "to", "make", "a", "test"]
-var other_phrases = ["JS", "seems", "much", "faster", "than", "Ruby"]
+/* return true if values match irregardless of key name 
+    If values anywhere in the objects match, return true
+        take the first object, values
+            returns each of the values 
+        compare the values of the second object
+            same procedure as first, but compares each of the second's values to each of the first
+                then moves to first's second index, compares each of the second's values
+        if at any point the values match, return true
 
-var sorted = longestPhrase(phrases);
-var longest_test_phrase = longestPhrase(test_phrases);
-var longest_other_phrase = longestPhrase(other_phrases);
-console.log(sorted);
-console.log(longest_test_phrase);
-console.log(longest_other_phrase);
 */
 
 function keyValueMatch(obj1, obj2) {
@@ -36,8 +43,34 @@ function keyValueMatch(obj1, obj2) {
             }
         }
     }
+    if (Object.keys(obj1).length != Object.keys(obj2).length ){
+        result = false
+    }
     return result // returns true/false
 };
+
+function randomTestData(times) {
+    var alphabet = "abcdefghijklmnopqrstuvwxyz"
+    var result = []
+    for (var samples = 0; samples <= times; samples++) {
+        sample = 
+        result.push(Math.floor(Math.random()*26))
+    }
+
+};
+
+/*
+var phrases = ["long phrase","longest phrase","longer phrase"];
+var test_phrases = ["several", "different", "phrases", "all", "to", "make", "a", "test"]
+var other_phrases = ["JS", "seems", "much", "faster", "than", "Ruby"]
+
+var sorted = longestPhrase(phrases);
+var longest_test_phrase = longestPhrase(test_phrases);
+var longest_other_phrase = longestPhrase(other_phrases);
+console.log(sorted);
+console.log(longest_test_phrase);
+console.log(longest_other_phrase);
+
 
 var objA = {name: "Steven", years: 54};
 var objB = {name: "Tamir", age: 54};
@@ -45,12 +78,15 @@ var objC = {alias: "Steven", age: 10};
 var objD = {"Street Name": "Bob", years: 10};
 var objE = {nameBackwards: "Bob", age: 54};
 var objF = {something: "Tammy", howMany: 20};
+var objG = {something:"Tammy"}
 
 keyValMatch = keyValueMatch(objA, objB);
 console.log(keyValMatch);
 console.log(keyValueMatch(objB, objE));
 console.log(keyValueMatch(objF, objA));
 console.log(keyValueMatch(objD, objB));
-console.log(keyValueMatch(objA, objE));
+console.log(keyValueMatch(objA, objG));
+*/
+
 
 
