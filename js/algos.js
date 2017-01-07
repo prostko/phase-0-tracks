@@ -49,14 +49,26 @@ function keyValueMatch(obj1, obj2) {
     return result // returns true/false
 };
 
+/* generate a new array of strings of inputted integer's length
+    generates random strings of letters between 1-10 letters long
+        random number of times(length of string)
+            random letters in string (picked from a supplied alphabet)
+    return the array
+*/
+
 function randomTestData(times) {
     var alphabet = "abcdefghijklmnopqrstuvwxyz"
     var result = []
-    for (var samples = 0; samples <= times; samples++) {
-        sample = 
-        result.push(Math.floor(Math.random()*26))
-    }
 
+    for (var samples = 0; samples < times; samples++) {
+        var word = ""
+        for (size = 0; size < (Math.floor((Math.random()*10) + 1)); size++) {
+            word += alphabet[Math.floor(Math.random()*25)+1]
+        }
+        result.push(word)
+        word = ""
+    }
+    return result
 };
 
 /*
@@ -88,5 +100,11 @@ console.log(keyValueMatch(objD, objB));
 console.log(keyValueMatch(objA, objG));
 */
 
+for (times = 0; times != 10; times++) {
+    test = randomTestData(6);
+    console.log("Data generated for testing : " + test);
+    testLongest = longestPhrase(test)
+    console.log("Longest Phrase in test array: " + testLongest)
+}
 
 
