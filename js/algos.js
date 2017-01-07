@@ -43,7 +43,7 @@ function keyValueMatch(obj1, obj2) {
             }
         }
     }
-    if (Object.keys(obj1).length != Object.keys(obj2).length ){
+    if (Object.keys(obj1).length != Object.keys(obj2).length) {
         result = false
     }
     return result // returns true/false
@@ -105,6 +105,6 @@ for (times = 0; times != 10; times++) {
     console.log("Data generated for testing : " + test);
     testLongest = longestPhrase(test)
     console.log("Longest Phrase in test array: " + testLongest)
-}
+};
 
 
