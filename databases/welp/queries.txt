@@ -1,0 +1,33 @@
+CREATE TABLE businesses (
+id INTEGER PRIMARY KEY,
+name VARCHAR(255)
+);
+
+CREATE TABLE users (
+id INTEGER PRIMARY KEY,
+first_name VARCHAR(255),
+last_name VARCHAR(255)
+);
+
+CREATE TABLE reviews (
+id INTEGER PRIMARY KEY,
+stars INTEGER,
+comment VARCHAR(255),
+business_id INTEGER,
+user_id INTEGER
+);
+
+INSERT INTO businesses(name) VALUES ('Grundy Hollow Wedding Chapel'),("Amir's Towing"),('The Beagle Nightclub'),('Lotus Yoga'),('Plumbing by Janet');
+
+INSERT INTO users(first_name,last_name) VALUES ('Bradford','Pitt'),('Mandy','Kaling'),('Angela','Jolie'),('Steven','Wonder'),('Holly','Berry'),('Merryl','Streepman');
+
+INSERT INTO reviews(stars,comment,business_id,user_id) VALUES (5,'fantasic',1,1),(5,'majestic, wonderous',1,2),(2,'Towing Sucks!!!',2,4),(5,'Looks Great!',5,4),(3,'Trump is a drumph',4,6),(4,"Yoga isn't chinese",4,5);
+
+SELECT * 
+FROM 
+    reviews
+        JOIN businesses
+            ON reviews.business_id = businesses.id
+        JOIN users
+            ON reviews.user_id = users.id
+            ;
