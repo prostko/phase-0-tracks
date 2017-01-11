@@ -1,0 +1,84 @@
+SELECT * FROM white_walkers; 
+
+UPDATE wights SET wall_position_id = 2 WHERE white_walker_id = 1;
+
+SELECT * FROM wights JOIN white_walkers ON wights.white_walker_id = white_walkers.id;
+
+SELECT wights.name, wights.age, white_walkers.name, white_walkers.age FROM wights JOIN white_walkers ON wights.white_walker_id = white_walkers.id;
+
+DELETE FROM  wights WHERE age > 60;
+
+
+List of joins :
+-Inner join 
+-Left join
+-Right join - not supported by sqlite
+-Full join - not supported by sqlite
+
+
+SELECT 
+	white_walkers.name, 
+	wights.name 
+FROM 
+	white_walkers  
+		JOIN wights
+			ON white_Walkers.id = wights.white_walker_id
+		JOIN wall_positions 
+			ON wights.wall_position_id = 2;
+
+SELECT 
+	wights.name,
+	wall_positions.position
+FROM 
+	wights 
+		JOIN white_walkers
+			ON wights.white_walker_id = white_walkers.id
+		LEFT OUTER JOIN wall_positions
+WHERE wights.wall_position_id = wall_positions.id;
+
+
+
+SELECT 
+	wall_positions.position
+FROM wights
+	INNER JOIN wall_positions
+		ON wall_positions.position = 'north'
+UNION 
+
+SELECT 
+	white_walkers.name
+FROM
+	wights
+		INNER JOIN white_walkers
+			ON wights.white_walker_id = white_walkers.id;
+
+
+
+
+
+
+
+
+
+__________________________________
+(wights tables creation and info)
+
+CREATE TABLE wights (
+id INTEGER PRIMARY KEY,
+name VARCHAR(50),
+age SMALLINT,
+eye_color VARCHAR(10),
+weapon BOOLEAN,
+white_walker_id INTEGER,
+wall_position_id INTEGER);
+
+
+INSERT INTO wights(name,age,eye_color,weapon,white_walker_id,wall_position_id)VALUES ('Samwell',25,'blue','true',1,2), 
+('Jon',23,'blue','true',1,2),
+('Richard',45,'blue','false',2,1),
+('Eagrit',18,'blue','false',4,1),
+('Mimsy',28,'blue','false',5,1),
+('Chuck',62,'blue','false',3,1),
+('Sven',60,'blue','true',3,1);
+
+==================================
