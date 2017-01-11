@@ -6,7 +6,7 @@ SELECT * FROM wights JOIN white_walkers ON wights.white_walker_id = white_walker
 
 SELECT wights.name, wights.age, white_walkers.name, white_walkers.age FROM wights JOIN white_walkers ON wights.white_walker_id = white_walkers.id;
 
-DELETE FROM wights WHERE age > 60;
+DELETE FROM  wights WHERE age > 60;
 
 
 List of joins :
