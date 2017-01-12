@@ -1,14 +1,14 @@
 2. 
 
-select *
-from
+SELECT *
+FROM
     reviews 
-        inner join
+        JOIN
             businesses
-                on businesses.id = reviews.business_id
-        inner join 
+                ON businesses.id = reviews.business_id
+        JOIN 
             users
-                on users.id = reviews.user_id;
+                ON users.id = reviews.user_id;
 
 3. 
 
