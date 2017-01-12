@@ -1,0 +1,27 @@
+2. 
+
+select *
+   from
+    reviews 
+    inner join
+    businesses
+        on businesses.id = reviews.business_id
+    inner join 
+    users
+        on users.id = reviews.user_id;
+
+3. 
+
+select users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment
+   from
+    reviews 
+    inner join
+    businesses
+        on businesses.id = reviews.business_id
+    inner join 
+    users
+        on users.id = reviews.user_id;
+
+4. 
+
+SELECT * FROM reviews JOIN businesses ON businesses.id = reviews.business_id WHERE businesses.id = 1;
