@@ -1,27 +1,50 @@
 2. 
 
 select *
-   from
+from
     reviews 
-    inner join
-    businesses
-        on businesses.id = reviews.business_id
-    inner join 
-    users
-        on users.id = reviews.user_id;
+        inner join
+            businesses
+                on businesses.id = reviews.business_id
+        inner join 
+            users
+                on users.id = reviews.user_id;
 
 3. 
 
-select users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment
-   from
+SELECT 
+    users.first_name, 
+    users.last_name, 
+    businesses.name, 
+    reviews.stars, 
+    reviews.comment
+FROM
     reviews 
-    inner join
-    businesses
-        on businesses.id = reviews.business_id
-    inner join 
-    users
-        on users.id = reviews.user_id;
+        INNER JOIN           
+            businesses
+                ON businesses.id = reviews.business_id
+        INNER JOIN 
+            users
+                ON users.id = reviews.user_id;
 
 4. 
 
-SELECT * FROM reviews JOIN businesses ON businesses.id = reviews.business_id WHERE businesses.id = 1;
+SELECT * 
+FROM 
+    reviews 
+        JOIN businesses
+            ON businesses.id = reviews.business_id 
+        JOIN users
+            ON reviews.user_id = users.id
+WHERE businesses.id = 1;
+
+
+
+
+
+
+
+
+
+
+
