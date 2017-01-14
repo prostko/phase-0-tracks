@@ -86,6 +86,7 @@ module CRM_database
       shipping_address VARCHAR(320),
       phone_number INTEGER,
       shirt_size INTEGER,
+      jacket_size VARCHAR(50),
       shoe_size INTEGER,
       birthday VARCHAR(50),
       nationality VARCHAR(255)
@@ -99,8 +100,8 @@ module CRM_database
 
   
 # Creating methods to put into SQL, for data population
-  def create_clients(db,name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,shoe_size,birthday,nationality)
-    db.execute("INSERT INTO clients_data(name,nickname,gender,email,billing_address,shipping_address,phone_number,shirt_size,shoe_size,birthday,nationality) VALUES (?,?,?,?,?,?,?,?,?,?,?)",[name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,shoe_size,birthday,nationality]) 
+  def create_clients(db,name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality)
+    db.execute("INSERT INTO clients_data(name,nickname,gender,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",[name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality]) 
   end
 
   def create_notes(db, client_id, note)
@@ -118,7 +119,7 @@ module CRM_database
       5.times do |x|
         x % 2 == 0 ? gendr = 'male' : gender = 'female'
         
-        create_clients(db_clients, Faker::Name.name,'none',gendr,Faker::Internet.email, Faker::Address.city+" "+Faker::Address.street_address+" "+Faker::Address.zip_code, Faker::Address.city+" "+Faker::Address.street_address+" "+Faker::Address.zip_code,Faker::PhoneNumber.cell_phone, Faker::Number.number(2), Faker::Number.digit, "#{Faker::Date.backward(9999)}", Faker::Address.country)
+        create_clients(db_clients, Faker::Name.name,'none',gendr,Faker::Internet.email, Faker::Address.city+" "+Faker::Address.street_address+" "+Faker::Address.zip_code, Faker::Address.city+" "+Faker::Address.street_address+" "+Faker::Address.zip_code,Faker::PhoneNumber.cell_phone, Faker::Number.number(2), Faker::Number.digit, Faker::Number.digit, "#{Faker::Date.backward(9999)}", Faker::Address.country)
       end
     end
 
