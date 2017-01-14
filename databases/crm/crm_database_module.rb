@@ -34,8 +34,9 @@
 
 
 require 'sqlite3'
-require 'faker'
-module crm_database
+
+
+module CRM_database
   def create_database
 
   db_clients =  SQLite3::Database.new("clients.db")
