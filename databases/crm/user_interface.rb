@@ -89,7 +89,7 @@ class BusinessLogic
     shoe_size = gets.chomp
 
 
-    @db_clients.execute("INSERT INTO clients_data(name,nickname,gender,email,billing_address,shipping_address,phone_number,shirt_size,shoe_size,birthday,nationality)VALUES (?,?,?,?,?,?,?,?,?,?,?)",[client_name,nickname,gender,email,billing,shipping,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality])
+    @db_clients.execute("INSERT INTO clients_data(name,nickname,gender,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality)VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",[client_name,nickname,gender,email,billing,shipping,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality])
   end
 end
 
@@ -98,7 +98,7 @@ end
 this = BusinessLogic.new('db_clients')
 this.read('clients_data','name')
 
-#this.create
+this.create
 
 
 
