@@ -98,8 +98,10 @@ module CRM_database
   db_clients.execute(create_table_purchase_histories)
   db_clients.execute(create_table_clients_data)
 
+#==============================================================================
+# Makes a whole bunch of fake data
   
-# Creating methods to put into SQL, for data population
+Creating methods to put into SQL, for data population
   def create_clients(db,name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality)
     db.execute("INSERT INTO clients_data(name,nickname,gender,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",[name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality]) 
   end
@@ -114,7 +116,7 @@ module CRM_database
   end
 
 
-# creating iterating methods to use above mothods and populate the tables
+creating iterating methods to use above mothods and populate the tables
   def populate_clients_data(db_clients)
       5.times do |x|
         x % 2 == 0 ? gendr = 'male' : gender = 'female'
@@ -135,7 +137,7 @@ module CRM_database
   db_clients.execute(create_collections_data)
 
  
- # implicit return the database
+ implicit return the database
   db_clients
   end
 end
