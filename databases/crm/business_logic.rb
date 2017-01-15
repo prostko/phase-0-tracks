@@ -1,7 +1,6 @@
 require_relative 'crm_database_module'
 require_relative 'database_helper'
 
-
 class BusinessLogic
 
   include CRM_database
@@ -11,9 +10,6 @@ class BusinessLogic
   def initialize(db)
     @db_clients = db
     @db_clients = self.create_database(@db_clients)
-    # populate_clients_data(@db_clients)
-    # populate_notes(@db_clients)
-    # @db_clients.execute(create_collections_data)
   end
 
   def populate_database
