@@ -33,8 +33,7 @@
 =end
 
 
-require 'sqlite3'
-require 'faker'
+require_relative 'database_helper'
 #Faker::Config.locale = 'en-US'
 
 
@@ -97,17 +96,19 @@ module CRM_database
   db_clients.execute(create_table_notes)
   db_clients.execute(create_table_purchase_histories)
   db_clients.execute(create_table_clients_data)
+  db_clients
+  end
 
 #==============================================================================
 # Makes a whole bunch of fake data
   
-Creating methods to put into SQL, for data population
-  def create_clients(db,name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality)
-    db.execute("INSERT INTO clients_data(name,nickname,gender,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",[name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality]) 
+# Creating methods to put into SQL, for data population
+  def create_clients(db_clients,name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality)
+    db_clients.execute("INSERT INTO clients_data(name,nickname,gender,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",[name,nickname,gendr,email,billing_address,shipping_address,phone_number,shirt_size,jacket_size,shoe_size,birthday,nationality]) 
   end
 
-  def create_notes(db, client_id, note)
-    db.execute("INSERT INTO notes(notes,client_id) VALUES (?,?)", [note,client_id])
+  def create_notes(db_clients, client_id, note)
+    db_clients.execute("INSERT INTO notes(notes,client_id) VALUES (?,?)", [note,client_id])
   end
 
 
@@ -116,7 +117,7 @@ Creating methods to put into SQL, for data population
   end
 
 
-creating iterating methods to use above mothods and populate the tables
+# creating iterating methods to use above mothods and populate the tables
   def populate_clients_data(db_clients)
       5.times do |x|
         x % 2 == 0 ? gendr = 'male' : gender = 'female'
@@ -125,25 +126,22 @@ creating iterating methods to use above mothods and populate the tables
       end
     end
 
-  def populate_notes_data(db)
+  def populate_notes(db)
 
     5.times do |x|
       create_notes(db,Faker::Number.between(1,25), Faker::ChuckNorris.fact)
     end
   end
 
-  populate_clients_data(db_clients)
-  populate_notes_data(db_clients)
-  db_clients.execute(create_collections_data)
+  # populate_clients_data(db_clients)
+  # populate_notes_data(db_clients)
+  # db_clients.execute(create_collections_data)
 
  
- implicit return the database
-  db_clients
-  end
+ # #implicit return the database
+ #  db_clients
+  
 end
-
-
-
 
 
 
