@@ -1,23 +1,40 @@
+require_relative 'database_helper'
 require_relative 'business_logic'
-require 'sqlite3'
 
 
 db_clients = BusinessLogic.new('db_clients')
 
-
 def begin_read(db_clients)
-  puts "Would you like to see all columns, or all data about one Client? ('all' / 'one')"
-  answer = gets.chomp.downcase
-  if answer == "all"
-    puts "Which column would you like to view? (all is a viable input)"
-      column = gets.chomp
-      column = "*" if column == "all"
-    db_clients.read("clients_data",column)
-  else 
-    puts "Which client would you like to view?"
-      client = gets.chomp
-    db_clients.read_all("clients_data","#{client}")
-  end
+  puts "would you like to see 'Clients' or 'Notes'"
+    table = gets.chomp.downcase
+    table[0] == "n" ? table = "notes" : table = "clients_data"
+
+    if table == "notes"
+      puts "Would you like to see 'All' Notes, or notes pertaining to a 'One' client?"
+        answer = gets.chomp.downcase
+      if answer[0] == "a"
+        db_clients.read("notes","notes")
+      else
+        puts "Which client?"
+          client_name = gets.chomp
+          client_id = db_clients.find_id(client_name)
+        db_clients.read_notes_client(client_name)
+      end
+    elsif table == "clients_data"
+      puts "Would you like to see all column data, or all data about one Client? ('all' / 'one')"
+        answer = gets.chomp.downcase
+      if answer[0] == "a"
+        puts "Which column would you like to view? (all is a viable input)"
+          column = gets.chomp
+          column = "*" if column == "all"
+        db_clients.read(table,column)
+      else 
+        puts "Which client would you like to view?"
+          client = gets.chomp
+        db_clients.read_all(table,"#{client}")
+      end
+    end
+  puts "\n\n"
   program_loop(db_clients)
 end
 
@@ -48,6 +65,7 @@ def begin_create(db_clients)
     shoe_size = gets.chomp
 
     db_clients.create(client_name, nickname, gender, email, billing, shipping, phone_number, shirt_size, jacket_size, shoe_size, birthday, nationality)
+    puts "\n\n"
     program_loop(db_clients)
 end
 
@@ -61,6 +79,7 @@ def begin_update(db_clients)
     new_value = gets.chomp
 
   db_clients.update(table, column, client, new_value)
+  puts "\n\n"
   program_loop(db_clients)
 end
 
@@ -72,6 +91,7 @@ def begin_note(db_clients)
     notes = gets.chomp
 
   db_clients.create_note(notes,client_id)
+  puts "\n\n"
   program_loop(db_clients)
 end
 
@@ -80,9 +100,23 @@ def begin_delete(db_clients)
   puts "Which client would you like to delete?"
     client = gets.chomp
     client_id = db_clients.find_id(client)
-  db_clients.delete(clients_data, client, "id", client_id)
-  db_clients.delete(notes,client, "notes.client_id", client_id)
+  db_clients.delete("clients_data", client, "id", client_id)
+  db_clients.delete("notes",client, "notes.client_id", client_id)
+  puts "\n\n"
   program_loop(db_clients)
+end
+
+def begin_populate(db_clients)
+  puts "Would you like to populate your databsae with information?"
+  puts "This will add (5) random Clients' information"
+  puts "Please input yes, or type 'done'"
+    answer = gets.chomp.downcase
+  if answer[0] == "y"
+    db_clients.populate_database
+  else
+    puts "\n\n"
+    program_loop(db_clients)
+  end 
 end
 
 def initiate
@@ -93,7 +127,8 @@ end
 
 def program_loop(db_clients)
   puts "What would you like to do?"
-  puts "View a Client, New Client, Update an existing Client, make a Note about a Client, or Delete an entry?"
+  puts "\n\n"
+  puts "View a Client, New Client, Update an existing Client, make a Note about a Client, or Delete an entry, or Populate your database?"
   
   answer = gets.chomp.downcase
   until answer == "done" || answer == "quit" 
@@ -108,12 +143,16 @@ def program_loop(db_clients)
       begin_note(db_clients)
     elsif answer[0] == "d"
       begin_delete(db_clients)
+    elsif answer[0] == "p"
+      begin_populate(db_clients)
+    elsif answer[0] == "q"
+      break
     else 
       puts "Please try again"
     end
-    puts "Would you like to continue or to quit?"
+    puts "Would you like to continue with the program or to quit?"
       answer = gets.chomp
-      break if answer == 'quit'
+      break if answer[0] == 'q'
       program_loop(db_clients)
   end
 end
