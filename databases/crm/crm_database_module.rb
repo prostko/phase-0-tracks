@@ -34,8 +34,6 @@
 
 
 require_relative 'database_helper'
-#Faker::Config.locale = 'en-US'
-
 
 
 module CRM_database
@@ -131,16 +129,7 @@ module CRM_database
     5.times do |x|
       create_notes(db,Faker::Number.between(1,25), Faker::ChuckNorris.fact)
     end
-  end
-
-  # populate_clients_data(db_clients)
-  # populate_notes_data(db_clients)
-  # db_clients.execute(create_collections_data)
-
- 
- # #implicit return the database
- #  db_clients
-  
+  end 
 end
 
 
