@@ -152,7 +152,7 @@ def program_loop(db_clients)
     end
     puts "Would you like to continue with the program or to quit?"
       answer = gets.chomp
-      break if answer[0] == 'q'
+      break if answer[0] == 'quit'
       program_loop(db_clients)
   end
 end
