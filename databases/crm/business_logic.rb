@@ -1,5 +1,5 @@
-require_relative 'CRM_database_module'
-require 'sqlite3'
+require_relative 'crm_database_module'
+require_relative 'database_helper'
 
 
 class BusinessLogic
@@ -11,6 +11,9 @@ class BusinessLogic
   def initialize(db)
     @db_clients = db
     @db_clients = self.create_database(@db_clients)
+    populate_clients_data(@db_clients)
+    populate_notes(@db_clients)
+    @db_clients.execute(create_collections_data)
   end
 
   def read(table, column)
@@ -30,7 +33,6 @@ class BusinessLogic
   end
 
   def update(table, column, client, new_value)
-    # update_command = "UPDATE #{table} SET #{column} = '#{new_value}' WHERE name='#{client}'"
     db_clients.execute("UPDATE #{table} SET #{column} = '#{new_value}' WHERE name='#{client}'")
   end
 
@@ -43,7 +45,8 @@ class BusinessLogic
   end
 end
 
-#  db_clients = BusinessLogic.new('db_clients')
-# # db_clients.update("clients_data", "name", "YYY", "ZZZ")
-# # client_id = db_clients.execute("SELECT id FROM clients_data WHERE name = 'ZZZ'")
-# db_clients.throwaway
+
+
+
+
+
