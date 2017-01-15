@@ -11,6 +11,12 @@ class BusinessLogic
   def initialize(db)
     @db_clients = db
     @db_clients = self.create_database(@db_clients)
+    # populate_clients_data(@db_clients)
+    # populate_notes(@db_clients)
+    # @db_clients.execute(create_collections_data)
+  end
+
+  def populate_database
     populate_clients_data(@db_clients)
     populate_notes(@db_clients)
     @db_clients.execute(create_collections_data)
@@ -21,7 +27,11 @@ class BusinessLogic
   end
 
   def read_all(table, name)
-    db_clients.execute("SELECT * FROM #{table} WHERE name = '#{name}'").each do |row| row.each do |item| puts "#{item}"end end
+    db_clients.execute("SELECT * FROM #{table} WHERE name = '#{name}'").each do |row| row.each do |item| puts "#{item} \n"end end
+  end
+
+  def read_notes_client(name)
+    db_clients.execute("SELECT clients_data.name, notes.notes FROM clients_data JOIN notes ON clients_data.id = notes.client_id WHERE name = '#{name}'").each do |row| row.each do |item| puts "#{item}"end end
   end
 
   def create(client_name, nickname, gender, email, billing, shipping, phone_number, shirt_size, jacket_size, shoe_size, birthday, nationality)
@@ -40,8 +50,8 @@ class BusinessLogic
      db_clients.execute("DELETE FROM #{table} WHERE #{id} = '#{client_id}'")
    end 
 
-  def find_id(name)
-    db_clients.execute("SELECT id FROM clients_data WHERE name = '#{client}'").join.to_i
+  def find_id(client_name)
+    db_clients.execute("SELECT id FROM clients_data WHERE name = '#{client_name}'").join.to_i
   end
 end
 
