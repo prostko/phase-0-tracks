@@ -13,4 +13,14 @@ LINUX is a lightweight operating system that is easily run on a lot of various s
     There seems to be a lot of contention on this one, but not on the original issue itself. It seems that a root user can do anything they want to, destroy the kernel for instance, and nothing will stop them. A regular user can do this too, but they need a password.  Also, when on root, all of your programs are running as root as well. So your dumb music player can wipe your system by accident. Its also a security risk for this reason as well.
 
 
+### Some Interesting Properties
 
+	onMouseOver  - The mouseover event is fired when a pointing device is moved onto the element that has the listener attached or onto one of its children.
+
+	onScroll - The scrollTop property sets or returns the number of pixels an element's content is scrolled vertically.
+
+	shadow - either a shadow around the element, or the Shadow DOM, which is the DOM inside the DOM that the encapsulating DOM can't reach. It just runs the script as though it was an object inside of the DOM, not another nested DOM
+	onPlay - the event occurs when the media has been started or is no longer paused
+	hidden - The element is not visible, but still affects layout
+	draggable
+	onDrag - execute a JavaScript when a <p> element is being dragged:
