@@ -9,7 +9,13 @@ db.results_as_hash = true
 # add a query parameter
 # GET /
 get '/' do
-  "#{params[:name]} is #{params[:age]} years old."
+  if params[:name] && params['age'] 
+   "#{params[:name]} is #{params[:age]} years old." 
+   elsif params['name']
+    "Hello, #{params[:name]}!"
+  else
+    "Hello, you!"
+  end
 end
 
 # write a GET route with
@@ -40,7 +46,7 @@ end
 # write a GET route that retrieves
 # a particular student
 
-get '/students/:id' do
+get '/students' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
@@ -53,4 +59,38 @@ get '/great_job' do
   name = params[:name]
   name ? "Good job, #{name}" : "Good job"
 end
+
+get '/add/:x/:y' do
+  num1 = params[:x].to_i
+  num2 = params[:y].to_i
+  sum = num1 + num2
+  "The sum of #{num1} and #{num2} is #{sum.to_s}"
+end
+
+# get '/campus/:campus' do
+#   campuses = db.execute("SELECT * FROM students WHERE students.campus = (?)", params[:campus])
+#   # response = ""
+#   # campuses.each do |campus|
+#   #   response << "Campus: campcampus<br>"
+#   #   response << "Name: #{student['name']}<br>"
+#   # end
+#   # response
+#   p campuses
+# end
+
+get '/students/find/:last_name' do
+# take the id and name from students
+#   augment this return to make name = the first name in the hash value's string
+  last_name = params[:last_name]
+  students = db.execute("SELECT id, name FROM students")
+  search_result = "Student Not Found"
+
+ students.each do |person|
+    if person['name'].split.last == last_name
+      search_result = db.execute("SELECT * FROM students WHERE id = (?)", [person['id']])
+    end
+  end
+  search_result.to_s
+end
+
 
