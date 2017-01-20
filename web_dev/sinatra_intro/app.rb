@@ -93,4 +93,25 @@ get '/students/find/:last_name' do
   search_result.to_s
 end
 
+=begin
+  
+Is sinatra the only web app in Ruby? What are some others?
+
+  Rails! hobo, trailblazer, volt, Lattice, Cramp, Angelo, Grape, Crepe, Yaks, Praxis
+  There are a whole bunch. mostly different tools to acheive a certain goal of some sort. 
+
+Are SQLite and the sqlite3 gem your only options for using a database with Sinatra? What are some others?
+
+  ActiveRecord, MySQL, oracleRaw
+  There are a few others, the others seem to be better for larger databases or more traffic or something
+  Though, I read that Facebook uses SQLite
+
+What is meant by the term web stack?
+
+  The tools that prgrammers use to make something. LAMP stack, WIMP stack, just a collection of 
+  all the things that the programmer uses to make a certain program work. The operating system, the
+  programming language itself, the database software and then the server software.
+  
+=end
+
 
